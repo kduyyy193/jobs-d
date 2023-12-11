@@ -1,0 +1,48 @@
+{
+    "env": {
+        "es2021": true,
+        "node": true
+    },
+    "extends": [
+        "eslint:recommended"
+    ],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "react-native"
+    ],
+    "rules": {
+        "react/react-in-jsx-scope": "off",
+        "react/jsx-filename-extension": [
+            1,
+            {
+                "extensions": [
+                    ".js",
+                    ".jsx"
+                ]
+            }
+        ],
+        "react/prop-types": "off",
+        "global-require": 0,
+        "indent": "off",
+        "react/no-unstable-nested-components": [
+            "off"
+        ],
+        "comma-dangle": "off",
+        "eslint quotes": [
+            "double"
+        ],
+        "no-undef": "error"
+    },
+    "settings": {
+        "import/ignore": [
+            "react-native"
+        ]
+    }
+}
