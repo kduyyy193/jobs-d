@@ -1,14 +1,10 @@
-import React from 'react'
-import { View, Text } from 'react-native'
+import React from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
 
-import styles from './popularjobcard.style'
+import styles from './popularjobcard.style';
 
-const PopularJobCard = () => {
-  return (
-    <View>
-      <Text>PopularJobCard</Text>
-    </View>
-  )
-}
+const PopularJobCard = ({ item, selectJob, onCardPress }) => {
+  return <TouchableOpacity style={styles.container(selectJob, item)}></TouchableOpacity>;
+};
 
-export default PopularJobCard
+export default PopularJobCard;

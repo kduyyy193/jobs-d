@@ -1,48 +1,52 @@
 {
+    "root": true,
     "env": {
-        "es2021": true,
-        "node": true
+      "node": true,
+      "es6": true,
+      "jest": true
     },
-    "extends": [
-        "eslint:recommended"
-    ],
     "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": 12,
-        "sourceType": "module"
+      "ecmaVersion": 2020,
+      "sourceType": "module",
+      "allowImportExportEverywhere": true
     },
-    "plugins": [
-        "react",
-        "react-native"
+    "ignorePatterns": [
+      "node_modules/*"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended",
+      "plugin:react-native/all"
     ],
     "rules": {
-        "react/react-in-jsx-scope": "off",
-        "react/jsx-filename-extension": [
-            1,
-            {
-                "extensions": [
-                    ".js",
-                    ".jsx"
-                ]
-            }
-        ],
-        "react/prop-types": "off",
-        "global-require": 0,
-        "indent": "off",
-        "react/no-unstable-nested-components": [
-            "off"
-        ],
-        "comma-dangle": "off",
-        "eslint quotes": [
-            "double"
-        ],
-        "no-undef": "error"
+      "react/prop-types": "off",
+      "import/order": [
+        "error",
+        {
+          "groups": [
+            "builtin",
+            "external",
+            "internal",
+            "parent",
+            "sibling",
+            "index",
+            "object"
+          ],
+          "newlines-between": "always",
+          "alphabetize": {
+            "order": "asc",
+            "caseInsensitive": true
+          }
+        }
+      ],
+      "import/default": "off",
+      "import/no-named-as-default-member": "off",
+      "import/no-named-as-default": "off",
+      "react/react-in-jsx-scope": "off",
+      "react-native/no-unused-styles": "error",
+      "react-native/no-raw-text": "error",
+      "react-native/no-inline-styles": "error",
+      "react-native/no-color-literals": "off"
     },
-    "settings": {
-        "import/ignore": [
-            "react-native"
-        ]
-    }
-}
+    "plugins": ["import"]
+  }
