@@ -1,16 +1,10 @@
-import React, { useState } from 'react';
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  Image,
-  FlatList,
-} from 'react-native';
 import { useRouter } from 'expo-router';
+import React, { useState } from 'react';
+import { View, Text, TextInput, TouchableOpacity, Image, FlatList } from 'react-native';
+
+import { COLORS, icons, SIZES } from '../../../constants';
 
 import styles from './welcome.style';
-import { COLORS, icons, SIZES } from '../../../constants';
 
 const jobsTypes = ['Fulltime', 'Part-time', 'Contractor'];
 
@@ -35,17 +29,13 @@ function Welcome() {
           />
         </View>
         <TouchableOpacity style={styles.searchBtn}>
-          <Image
-            source={icons.search}
-            style={styles.searchBtnImage}
-            resizeMode="cover"
-          />
+          <Image source={icons.search} style={styles.searchBtnImage} resizeMode="cover" />
         </TouchableOpacity>
       </View>
       <View style={styles.tabsContainer}>
         <FlatList
           data={jobsTypes}
-          renderItem={(({ item }) => (
+          renderItem={({ item }) => (
             <TouchableOpacity
               style={styles.tab(activeJobType, item)}
               onPress={() => {
@@ -53,13 +43,9 @@ function Welcome() {
                 router.push(`/search/${item}`);
               }}
             >
-              <Text
-                style={styles.tabText(activeJobType, item)}
-              >
-                {item}
-              </Text>
+              <Text style={styles.tabText(activeJobType, item)}>{item}</Text>
             </TouchableOpacity>
-          ))}
+          )}
           keyExtractor={(item) => item}
           contentContainerStyle={{ columnGap: SIZES.small }}
           horizontal

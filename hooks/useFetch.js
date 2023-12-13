@@ -15,7 +15,7 @@ const useFetch = (endpoint, { query, page, num_pages }) => {
       num_pages,
     },
     headers: {
-      'X-RapidAPI-Key': process.env.RAPID_API_KEY,
+      'X-RapidAPI-Key': process.env.EXPO_PUBLIC_RAPID_API_KEY,
       'X-RapidAPI-Host': 'jsearch.p.rapidapi.com',
     },
   };

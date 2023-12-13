@@ -1,18 +1,30 @@
-import React from 'react';
-import { ActivityIndicator, FlatList, Text, TouchableOpacity, View } from 'react-native';
 import { useRouter } from 'expo-router';
+import React, { useState } from 'react';
+import { ActivityIndicator, FlatList, Text, TouchableOpacity, View } from 'react-native';
+
+import { SIZES } from '../../../constants';
+import useFetch from '../../../hooks/useFetch';
+import PopularJobCard from '../../common/cards/popular/PopularJobCard';
 
 import styles from './popularjobs.style';
-import useFetch from '../../../hooks/useFetch';
 
 function Popularjobs() {
   const router = useRouter();
 
-  const { data, error, isLoading, refetch } = useFetch('search', {
+  const { data, error, isLoading } = useFetch('search', {
     query: 'react developer',
     num_pages: 1,
     page: 1,
   });
+
+  console.log({ data });
+
+  const [selectedJob, setSelectedJob] = useState();
+
+  const handleCardPress = (item) => {
+    router.push(`/job-details/${item.job_id}`);
+    setSelectedJob(item.job_id);
+  };
 
   return (
     <View style={styles.container}>
@@ -28,7 +40,19 @@ function Popularjobs() {
         ) : error ? (
           <Text>Something went wrong!</Text>
         ) : (
-          <FlatList />
+          <FlatList
+            data={data}
+            renderItem={({ item }) => (
+              <PopularJobCard
+                item={item}
+                selectedJob={selectedJob}
+                handleCardPress={handleCardPress}
+              />
+            )}
+            keyExtractor={(item) => item.job_id}
+            contentContainerStyle={{ columnGap: SIZES.medium }}
+            horizontal
+          />
         )}
       </View>
     </View>
