@@ -1,0 +1,34 @@
+{
+  "root": true,
+  "env": {
+    "node": true,
+    "es6": true,
+    "jest": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module",
+    "allowImportExportEverywhere": true
+  },
+  "ignorePatterns": [
+    "node_modules/*"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-native/all"
+  ],
+  "rules": {
+    "react/prop-types": 0,
+    "no-underscore-dangle": 0,
+    "camelcase": "off",
+    "no-new": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "react-hooks/rules-of-hooks": "off",
+    "react-native/no-color-literals": "off",
+    "react-native/no-inline-styles": 0
+  },
+  "plugins": [
+    "import"
+  ]
+}
